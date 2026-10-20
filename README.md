@@ -74,7 +74,7 @@ Urutan yang disarankan: US-01, US-02, US-03, US-04, US-05, US-06, lalu fitur bon
 
 ## Tentang aplikasi ini
 
-- **Nama usaha:**
-- **Pembuat:**
-- **Link aplikasi:**
-- **Fitur bonus yang dikerjakan:**
+- **Nama usaha:** Cookies Delight
+- **Pembuat:** Anggun Setyo Dewanti
+- **Link aplikasi:** https://titrasi-coffe.vercel.app (atau link Vercel Anda)
+- **Fitur bonus yang dikerjakan:** US-07 (List Produk di Admin dari Database), US-08 (Tambah Produk Baru), US-09 (Ubah Produk), US-10 (Hapus Produk dengan Konfirmasi), US-11 (Filter Kategori & Pencarian), US-15 (Urutkan Produk), US-17 (Produk Terkait di Detail), US-22 (Halaman Tentang & Kontak), US-23 (Bagikan / Salin Link), US-26 (Metadata SEO & Open Graph), US-27 (Sitemap & Robots.txt), US-28 (Halaman 404 & Skeleton Loading), K-6 s/d K-13 (Header Keamanan, CSP, Proteksi Bot Admin, Audit Dependensi)

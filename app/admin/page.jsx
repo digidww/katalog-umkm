@@ -1,14 +1,17 @@
 import NavAdmin from "@/components/NavAdmin";
 import TabelProduk from "@/components/TabelProduk";
 import Tombol from "@/components/Tombol";
-import CatatanBelumAktif from "@/components/CatatanBelumAktif";
-import { produkContoh } from "@/lib/data-contoh";
+import { buatSupabaseServer } from "@/lib/supabase";
 
-// US-06: halaman ini belum terlindungi. Siapa pun bisa membukanya.
-// Tugas peserta: hanya admin yang sudah login boleh membuka semua halaman /admin.
-export default function HalamanAdmin() {
-  // US-07 (bonus): daftar produk masih memakai data contoh, belum dari database.
-  const daftarProduk = produkContoh;
+// US-07: daftar produk di /admin diambil dari database Supabase.
+export default async function HalamanAdmin() {
+  const supabase = buatSupabaseServer();
+  const { data, error } = await supabase
+    .from("produk")
+    .select("id, nama, harga, foto_url, kategori")
+    .order("created_at", { ascending: false });
+
+  const daftarProduk = data ?? [];
 
   return (
     <div className="flex flex-col gap-6 py-8">
@@ -18,10 +21,15 @@ export default function HalamanAdmin() {
         {/* US-08 (bonus): tambah produk */}
         <Tombol href="/admin/produk/baru">Tambah produk</Tombol>
       </div>
-      <CatatanBelumAktif>
-        Halaman admin belum terlindungi dan masih memakai data contoh: lihat US-06 dan US-07.
-      </CatatanBelumAktif>
-      <TabelProduk daftarProduk={daftarProduk} />
+      {error ? (
+        <p className="rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700">
+          Gagal memuat produk: {error.message}
+        </p>
+      ) : daftarProduk.length === 0 ? (
+        <p className="text-teks-lembut">Belum ada produk.</p>
+      ) : (
+        <TabelProduk daftarProduk={daftarProduk} />
+      )}
     </div>
   );
 }

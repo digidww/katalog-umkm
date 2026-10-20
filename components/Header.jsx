@@ -8,6 +8,9 @@ export default function Header() {
         <Link href="/" className="text-lg font-extrabold tracking-tight text-utama">
           {toko.nama}
         </Link>
+        <Link href="/tentang" className="text-sm font-medium text-teks-lembut hover:text-utama">
+          Tentang Toko
+        </Link>
       </div>
     </header>
   );
