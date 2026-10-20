@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { keluarAdmin } from "@/app/admin/actions";
 
+// US-04: tombol Keluar memanggil Server Action keluarAdmin.
 export default function NavAdmin() {
   return (
     <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 border-b border-garis pb-4 text-sm">
@@ -9,10 +11,11 @@ export default function NavAdmin() {
       <Link href="/admin/password" className="font-semibold hover:text-utama">
         Ganti password
       </Link>
-      {/* US-04: tombol keluar belum berfungsi */}
-      <button type="button" className="ml-auto text-teks-lembut hover:text-bahaya">
-        Keluar
-      </button>
+      <form action={keluarAdmin} className="ml-auto">
+        <button type="submit" className="text-teks-lembut hover:text-bahaya">
+          Keluar
+        </button>
+      </form>
     </nav>
   );
 }
